@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07514e">
+  <meta name="description" content="Drift through a galaxy of golden jellyfish in the sunlit waters of Jellyfish Lake, Palau. A procedural underwater experience.">
+  <title>The Golden Multitude · Jellyfish Lake</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b5855'/%3E%3Cpath d='M12 34a20 20 0 0 1 40 0q-20 12-40 0' fill='%23e5b75c'/%3E%3Cpath d='M23 39q-8 12 0 18m9-18q8 10 0 18m9-18q-7 12 0 18' fill='none' stroke='%23e5b75c' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
+</head>
+<body>
+  <main id="lake" aria-label="An immersive underwater scene in Jellyfish Lake. Move your pointer to gently steer, or use the view controls."></main>
+  <aside class="controls" aria-label="Lake exploration controls">
+    <div class="drawer" id="drawer" hidden>
+      <div class="drawer-heading"><span>FIND YOUR CURRENT</span><span class="coordinates">7°09′ N &nbsp; 134°22′ E</span></div>
+      <div class="views" role="group" aria-label="View presets">
+        <button class="view active" data-view="galaxy" aria-pressed="true"><svg viewBox="0 0 40 32" aria-hidden="true"><circle cx="12" cy="9" r="2"/><circle cx="28" cy="6" r="1.5"/><circle cx="23" cy="23" r="2"/><circle cx="6" cy="25" r="1"/><circle cx="33" cy="18" r="1"/><path d="M16 16h8m-4-4v8"/></svg><span>Mid-lake</span></button>
+        <button class="view" data-view="surface" aria-pressed="false"><svg viewBox="0 0 40 32" aria-hidden="true"><path d="M4 8q4-4 8 0t8 0t8 0t8 0M12 21a5 5 0 0 1 10 0q-5 3-10 0m3 2v4m4-4v5"/></svg><span>Surface</span></button>
+        <button class="view" data-view="edge" aria-pressed="false"><svg viewBox="0 0 40 32" aria-hidden="true"><path d="M7 26l5-19 5 19M8 20h8m8 6V12m-5 7 5-9 5 9m-1 7V6m-5 7 5-9 6 9"/></svg><span>Lake edge</span></button>
+      </div>
+      <div class="setting tour-row"><div><span>Follow the light</span><small>A slow, wandering tour</small></div><button id="tour" class="switch" role="switch" aria-checked="false" aria-label="Auto-drift tour"><span></span></button></div>
+      <label class="setting density-row" for="density"><span>Golden multitude</span><output id="density-value">Abundant</output><input id="density" type="range" min="35" max="100" value="85" aria-label="Jellyfish density"></label>
+      <div class="setting quality-row"><label for="quality">Water detail</label><select id="quality"><option value="high">Luminous</option><option value="balanced">Balanced</option><option value="gentle">Gentle</option></select></div>
+      <p class="steering-note"><span class="pointer-icon">↗</span> Move your pointer to gently steer. Simply drift.</p>
+    </div>
+    <div class="control-bar">
+      <button id="expand" class="identity" aria-expanded="false" aria-controls="drawer"><svg class="jelly-icon" viewBox="0 0 30 34" aria-hidden="true"><path d="M3 16a12 12 0 0 1 24 0Q15 23 3 16Z"/><path d="M9 22q-4 5 0 9m6-9q4 4 0 9m6-9q-4 5 0 9"/></svg><span><strong>Jellyfish Lake</strong><small>PALAU <i></i> FOLLOW THE LIGHT</small></span><svg class="chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="m4 10 4-4 4 4"/></svg></button>
+      <span class="divider"></span><button class="icon-button" id="reset" title="Return to the golden river" aria-label="Reset to the sunlit bloom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8a8 8 0 1 1-1 7M5 3v6h6"/></svg></button>
+    </div>
+  </aside>
+  <div id="unavailable" hidden>This lake needs WebGL 2 to shimmer. Please open it in a browser with hardware acceleration enabled.</div>
+  <script type="module" src="./scene.js"></script>
+</body>
+</html>
